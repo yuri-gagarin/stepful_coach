@@ -25,7 +25,7 @@ export const INITIAL_CONTEXT: IGlobalAppContext = {
   dispatch: (value: any): void => {}
 }
 
-const AppStore = createContext<IGlobalAppContext>(INITIAL_CONTEXT);
+export const AppStore = createContext<IGlobalAppContext>(INITIAL_CONTEXT);
 
 export const ContextProvider: React.FC<PropsWithChildren> = ({ children }): JSX.Element => {
   const [ state, dispatch ] = useReducer(rootReducer, { ...INITIAL_CONTEXT.state });

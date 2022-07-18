@@ -1,5 +1,7 @@
 import express, { Router } from "express";
 import next from "next";
+// db setup //
+import setupDatabase from "./db/setupDB";
 // types //
 import type { Express, Request, Response } from "express";
 import type { NextServer } from "next/dist/server/next";
@@ -9,15 +11,17 @@ import type { NextServer } from "next/dist/server/next";
 class Server {
   // env vars //
   private dev: boolean = process.env.NODE_ENV !== "production";
-  private router: Router = Router();
   private PORT: number = process.env.PORT && parseInt(process.env.PORT) || 3000;
   private hostHame: string = process.env.HOST_NAME || "localhost";
   //
-  private server: Express =  express();
-  private app: NextServer = next({ dev: this.dev, port: this.PORT, hostname: this.hostHame });
-
+  private server: Express;
+  private app: NextServer;
+  private router: Router;
   
   constructor() {
+    this.server = express();
+    this.app =  next({ dev: this.dev, port: this.PORT, hostname: this.hostHame });
+    this.router = Router();
   }
 
   public async launch(): Promise<Server> {
@@ -29,15 +33,17 @@ class Server {
 
       this.server.listen(this.PORT, () => {
         console.log(`Ready on localhost:${this.PORT} - env ${process.env.NODE_ENV}`);
-      })
+      });
+
       return this;
     } catch (error) {
-      throw error
+      console.log(error);
+      process.exit(1);
     }
   }
 
   private async configureDB(): Promise<void> {
-
+    await setupDatabase({ db: "next_example_students" });
   }
 
   private async configureServer() {
@@ -52,7 +58,7 @@ class Server {
       try {
         return handle(req, res);
       } catch (error) {
-        process.exit(1);
+        console.log(error);
       }
     });
   }
