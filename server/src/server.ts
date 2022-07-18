@@ -1,5 +1,7 @@
 import express, { Router } from "express";
 import next from "next";
+// routes //
+import CombineRoutes from "./routing/combineRoutes";
 // db setup //
 import setupDatabase from "./db/setupDB";
 // types //
@@ -52,8 +54,10 @@ class Server {
   }
 
   private async configureRouter() {
-    const handle = this.app.getRequestHandler();
+    CombineRoutes(this.router);
     this.server.use(this.router);
+    //
+    const handle = this.app.getRequestHandler();
     this.server.all("*", (req: Request, res: Response) => {
       try {
         return handle(req, res);

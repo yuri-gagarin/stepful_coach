@@ -6,5 +6,5 @@ import type { Router} from "express";
 
 
 export default function combineRoutes(router: Router): void {
-  new TestRoutes(router, new TestsController())
+  new TestRoutes(router, new TestsController()).init()
 }

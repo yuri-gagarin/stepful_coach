@@ -10,11 +10,13 @@ interface IUserLayoutProps extends React.PropsWithChildren {
 
 export const UserLayout: React.FunctionComponent<IUserLayoutProps> = ({ children }): JSX.Element => {
 
+  /*
   const { state } = useContext(AppStore)
 
   useEffect(() => {
     console.log(state)
   }, []);
+  */
 
   return (
     <Grid style={{ border: "10px solid red" }}>

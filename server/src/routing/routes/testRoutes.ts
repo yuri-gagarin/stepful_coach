@@ -6,12 +6,13 @@ export default class TestRoutes {
 
   constructor(router: Router, controller: any) {
     this.router = router;
+    this.controller = controller;
   }
 
   init(): void {
-    this.indexRoute("/api/index")
-    this.createRoute("/api/create")
-    this.deleteRoute("/api/delete")
+    this.indexRoute("/api/test")
+    this.createRoute("/api/test")
+    this.deleteRoute("/api/test/:test_id")
   } 
 
   //
