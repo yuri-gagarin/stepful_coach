@@ -1,34 +1,35 @@
 export type TestState = {
   loading: boolean;
-  value: string;
+  value: any;
+  testModels: any[];
 };
 
 export type TestFirst = {
   readonly type: "TestFirst";
-  readonly payload: { value: string; };
+  readonly payload: { value: any; };
 };
 export type TestIndex = {
   readonly type: "TestIndex";
   readonly payload: {
-    loading: boolean; value: string;
+    loading: boolean; value: any; testModels: any[];
   }
 };
 export type TestCreate = {
   readonly type: "TestCreate";
   readonly payload: {
-    loading: boolean; value: string;
+    loading: boolean; value: any; newTestModel: any;
   }
 };
 export type TestDelete = {
   readonly type: "TestDelete";
   readonly payload: {
-    loading: boolean; value: string;
+    loading: boolean; value: any; deletedTestModel: any;
   }
 };
 
 export type TestAction = TestFirst | TestIndex | TestCreate | TestDelete;
 
-export const INITIAL_TEST_STATE: TestState = { loading: false, value: "test" };
+export const INITIAL_TEST_STATE: TestState = { loading: false, value: "test", testModels: [] };
 
 export const testReducer = (initialTestState: TestState = INITIAL_TEST_STATE, action: TestAction): TestState => {
   switch (action.type) {

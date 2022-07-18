@@ -14,8 +14,8 @@ export const testIndexCall = async (dispatch: Dispatch<TestAction>): Promise<voi
 
   try {
     const { data } = await axios(requestConfig);
-    const message = data.message as string;
-    dispatch({ type: "TestIndex", payload: { loading: false,  value: message} });
+    const { message, testModels } = data as { message: string; testModels: any };
+    dispatch({ type: "TestIndex", payload: { loading: false,  value: message, testModels } });
   } catch (error: any) {
     console.log(error);
     throw error;
@@ -31,8 +31,8 @@ export const testCreateCall = async (dispatch: Dispatch<TestAction>): Promise<vo
 
   try {
     const { data } = await axios(requestConfig);
-    const message = data.message as string;
-    dispatch({ type: 'TestCreate', payload: { loading: false,  value: message} });
+    const { message, newTestModel } = data as { message: string; newTestModel: any };
+    dispatch({ type: 'TestCreate', payload: { loading: false,  value: message, newTestModel} });
   } catch (e: any) {
     console.log(e);
     throw e;
@@ -47,8 +47,8 @@ export const testDeleteCall = async (dispatch: Dispatch<TestAction>): Promise<vo
 
   try {
     const { data } = await axios(requestConfig);
-    const message = data.message as string;
-    dispatch({ type: 'TestDelete', payload: { loading: false,  value: message} });
+    const { message, deletedTestModel } = data as { message: string; deletedTestModel: any };
+    dispatch({ type: 'TestDelete', payload: { loading: false,  value: message, deletedTestModel } });
   } catch (e: any) {
     console.log(e);
     throw e;
