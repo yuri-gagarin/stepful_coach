@@ -2,13 +2,15 @@ import React, { createContext, useReducer } from "react";
 import { rootReducer } from "./reducers/rootReducer";
 //
 import type { Dispatch, PropsWithChildren } from "react";
+import type { CoachState, CoachAction } from "./reducers/coachReducer";
+import type { StudentState, StudentAction } from "./reducers/studentReducer";
 //
-import { INITIAL_TEST_STATE, TestAction, TestState } from "./reducers/testReducer";
 
-export type AppAction = TestAction;
+export type AppAction = CoachAction | StudentAction; // add if time //
 
 export type GeneralAppState = {
-  testState: TestState;
+  coachState: CoachState
+  studentState: StudentState;
 };
 
 export interface IGlobalAppContext {
@@ -18,9 +20,10 @@ export interface IGlobalAppContext {
 
 export const INITIAL_CONTEXT: IGlobalAppContext = {
   state: {
-    testState: INITIAL_TEST_STATE,
+      coachState: { coach: {}, meetings: [], workdays: [] },
+      studentState: { student: {}, coaches: [], meetings: [] },
   },
-  dispatch: (value: any): void => {}
+  dispatch: (value: AppAction): void => {}
 }
 
 export const AppStore = createContext<IGlobalAppContext>(INITIAL_CONTEXT);
