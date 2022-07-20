@@ -22,11 +22,22 @@ export default class CoachsController {
   }
 
   async index(req: Request, res: Response): Promise<any> {
-
+    try {
+      const coaches: ICoach[] = await Coach.find({}).populate("availabilityDays").exec(); // that way students can the availability //
+      return res.status(200).json({ message: "Active coaches", coaches });
+    } catch (error) {
+      return errorHelper(res, { error });
+    }
   }
 
   async create(req: Request, res: Response): Promise<any> {
-  
+    const { name } = req.body as { name: string; };
+    try {
+      const newCoach: ICoach = await Coach.create({ name });
+      return res.status(200).json({ message: "Created a coach", newCoach });
+    } catch (error) {
+      return errorHelper(res, { error });
+    }
   }
   
 }

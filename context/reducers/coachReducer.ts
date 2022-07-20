@@ -1,4 +1,5 @@
 export type CoachState = {
+  message?: string;
   coach: any;
   meetings: any[];
   workdays: any[];
@@ -6,15 +7,15 @@ export type CoachState = {
 
 export type CreateCoach = {
   readonly type: "CreateCoach";
-  readonly payload: { coach: any };
+  readonly payload: { message?: string; coach: any };
 };
 export type FetchCoachSchedule = {
   readonly type: "FetchCoachSchedule";
-  readonly payload: { meetings: any[] };
+  readonly payload: { message?: string;  meetings: any[] };
 };
 export type AddWorkDay = {
   readonly type: "AddWorkDay";
-  readonly payload: { coach: any, workday?: any } // ohhhh with all the any
+  readonly payload: { message?: string; coach: any, workday?: any } // ohhhh with all the any
 }
 
 export type CoachAction = CreateCoach | FetchCoachSchedule | AddWorkDay;

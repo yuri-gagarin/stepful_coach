@@ -1,4 +1,5 @@
 export type StudentState = {
+  message?: string;
   student: any;
   coaches: any[];
   meetings: any[];
