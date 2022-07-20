@@ -1,34 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+So it works, technically... barely.. but it works...
 
-## Getting Started
+All right so the PROS or positives of it all: ( and notes for a meeting )
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+PROS: 
+  1. It works
+  2. Barely
+  3. I ran out of PROS at this point...
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+CONS:
+  1. It's a mess, let's start with oganization of things:
+   - Too many ANY types, we want all of our actions typed, organized, types in their own separate files?
+   - Component structure (there is none...), Ideally nicely organized subvomponents which inherit state/context from its parent components
+   - API actions in the same module as components, types in the same module as components, helpers in the same module as components, etc.
+  2. Validations: There are none, none on client side, none on server side, cross your heart, hope it works,
+  3. Tests: See above 
+  4. General DB schema... it works technically... multiple collections, "joined" together seems better suited for a relational approach...
+  5. RESTful principles... I'm possibly updating an existing model in a POST:Create method... so yeah...
+  6. Repeating yourself/DRY principles: to scale maybe have parent controller Classes/Interfaces (yes there are no classes in JS, I like to pretend :). Error helpers especially could be inherited...
+  7. Desktop/Tablet/Mobile... yeah it doesn't even look good on desktop
+  8. Shortcuts eveyrhwere... bad ones... (hours maybe should be stored as integers, but then we have to convert them back to a string value...)
+  9. Mixing of local <useState> with <useContext>. It's ok... I guess, but should be better
+  10-Nth: oh it can go on
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
