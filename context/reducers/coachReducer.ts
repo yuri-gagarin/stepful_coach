@@ -35,6 +35,7 @@ export default function coachReducer(initState: CoachState = { coach: {}, meetin
       };
     }
     case "AddWorkDay": {
+      console.log(action.payload.coach)
       return {
         ...initState,
         coach: { ...action.payload.coach },

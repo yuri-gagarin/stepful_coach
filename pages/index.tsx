@@ -13,7 +13,9 @@ const Home: NextPage = () => {
               <Button color="green" content="Coach Dashboard" />
             </Link>
             <Button.Or></Button.Or>
-            <Button color="blue" content="Student Dashboard" />
+            <Link href="/student">
+              <Button color="blue" content="Student Dashboard" />
+            </Link>
           </Button.Group>
         </Segment>
        

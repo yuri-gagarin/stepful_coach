@@ -7,15 +7,15 @@ export type StudentState = {
 
 export type CreateStudent = {
   readonly type: "CreateStudent";
-  readonly payload: { student: any };
+  readonly payload: { message?: string; student: any };
 };
 export type FetchCoachesForStudent = {
   readonly type: "FetchCoachesForStudent";
-  readonly payload: { coaches: any[] };
+  readonly payload: { message?: string; coaches: any[] };
 };
 export type ScheduleCallWithCoach = {
   readonly type: "ScheduleCallWithCoach";
-  readonly payload: { student: any, meeting?: any } // ohhhh with all the any
+  readonly payload: { message?: string; student: any, meeting?: any } // ohhhh with all the any
 }
 
 export type StudentAction = CreateStudent | FetchCoachesForStudent | ScheduleCallWithCoach;
@@ -25,18 +25,22 @@ export default function studentReducer(initState: StudentState = { student: {}, 
     case "CreateStudent": {
       return {
         ...initState,
+        message: action.payload.message,
         student: { ...action.payload.student },
       };
     }
     case "FetchCoachesForStudent": {
       return {
         ...initState,
+        message: action.payload.message,
+        coaches: [ ...action.payload.coaches ],
         meetings: [ ...action.payload.coaches  ]
       };
     }
     case "ScheduleCallWithCoach": {
       return {
         ...initState,
+        message: action.payload.message,
         student: { ...action.payload.student },
         meetings: [ ...initState.meetings, action.payload.meeting ]
       };
