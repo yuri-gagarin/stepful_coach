@@ -45,7 +45,7 @@ class Server {
   }
 
   private async configureDB(): Promise<void> {
-    await setupDatabase({ db: "next_example_students" });
+    await setupDatabase({ db: "stepful_coach_schedule" });
   }
 
   private async configureServer() {
